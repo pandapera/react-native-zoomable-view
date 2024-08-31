@@ -122,6 +122,9 @@ class ReactNativeZoomableView extends Component<
           this._getZoomableViewEventObject()
         );
       },
+      onMoveShouldSetPanResponder: (e, s) => {
+        return Math.abs(s.dx) > 5 || Math.abs(s.dy) > 5;
+      },
       onPanResponderTerminationRequest: (evt, gestureState) =>
         !!this.props.onPanResponderTerminationRequest?.(
           evt,
